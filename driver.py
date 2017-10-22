@@ -79,11 +79,11 @@ def find_lexical_match(word):
 			matches.append(city_name)
 	return matches
 
-# main program
-def main():
-	# all cities with a population > 1000 or seats of adm div (ca 150.000), see 'geoname' table for columns
-	parse_file('cities1000.txt')
-	print(find_closest_cities('3039154', 3))
-	print(find_lexical_match('North'))
+# # main program for testing purposes (uncomment to test)
+# def main():
+# 	# all cities with a population > 1000 or seats of adm div (ca 150.000), see 'geoname' table for columns
+# 	parse_file('cities1000.txt')
+# 	print(find_closest_cities('3039154', 3))
+# 	print(find_lexical_match('North'))
 
-main()
+# main()

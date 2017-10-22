@@ -1,0 +1,36 @@
+body {
+	font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+/* h3 {
+	font: 18px 'Lucida Grande', Helvetica, Arial, sans-serif;
+} */
+
+#container {
+	height: 400px;
+	min-width: 310px;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.inputNav {
+	margin: 8px auto;
+}
+
+#mapid {
+	height: 600px;
+    margin: 0 auto;
+    z-index: 0;
+}
+
+#map {
+	min-width: 310px;
+	max-width: 1000px;
+    margin: 0 auto;
+    z-index: 999;
+}
+
+/*.dropdown-menu {
+    width: 300px !important;
+    height: 400px !important;
+}*/
