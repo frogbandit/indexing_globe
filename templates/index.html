@@ -6,15 +6,13 @@
     <meta http-equiv="Content-Type" context="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Indexing the Globe</title>
-    <meta name="description" content="Tenant Dashboard">
+    <meta name="description" content="Using GeoName Data">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
     <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
-        crossorigin="" />
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
@@ -22,18 +20,21 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand">Indexing the Globe</a>
+                <a class="navbar-brand" href="/">Indexing the Globe</a>
             </div>
             <ul class="nav navbar-nav">
-                <li>
-                    <a href='/about'>About</a>
-                </li>
+                <li><a href='/about'>About</a> </li>
+                <li><input class="form-control inputNav" id="twitterHandle" placeholder="BarackObama"></li>
             </ul>
+
+            <ul class="nav navbar-nav">
+                <li><input class="form-control inputNav" id="numTweets" placeholder="Number of Tweets: 10"></li>
+            </ul>
+
         </div>
     </nav>
-    <div id="container" style="height: 100%">
-
-    </div>
+    <div id="container" style="height: 100%"></div>
+    
     <script type="text/javascript" src="/static/javascripts/script.js"></script>
 </body>
 

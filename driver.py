@@ -1,12 +1,12 @@
 from math import sin, cos, sqrt, radians, asin
 
-# list of city data (as a list)
-# dictionary of city data (indexed by city id)
-data_list = []
-data_dict = {}
-
 # to read each line of the txt file
 def parse_file(filename):
+	# list of city data (as a list)
+	# dictionary of city data (indexed by city id)
+	data_list = []
+	data_dict = {}
+
 	'''
 	The main 'geoname' table has the following fields :
 	---------------------------------------------------
@@ -37,9 +37,11 @@ def parse_file(filename):
 			data_list.append(line_list)
 			city_id = line_list[0]
 			data_dict[city_id] = line_list
+	
+	return [data_dict, data_list]
 
 # returns the closest k cities by distance
-def find_closest_cities(given_city_id, k):
+def find_closest_cities(given_city_id, k, data_dict, data_list):
 		given_city = data_dict[given_city_id]
 		given_city_lat = float(given_city[4])
 		given_city_lon = float(given_city[5])
@@ -71,7 +73,7 @@ def compute_distance(lat1, lon1, lat2, lon2):
     return km
 
 # Finds matches for the given word based on city name 
-def find_lexical_match(word):
+def find_lexical_match(word, data_dict, data_list):
 	matches = []
 	for city_list in data_list: 
 		city_name = city_list[2]
@@ -82,8 +84,10 @@ def find_lexical_match(word):
 # # main program for testing purposes (uncomment to test)
 # def main():
 # 	# all cities with a population > 1000 or seats of adm div (ca 150.000), see 'geoname' table for columns
-# 	parse_file('cities1000.txt')
-# 	print(find_closest_cities('3039154', 3))
-# 	print(find_lexical_match('North'))
+# 	parsed = parse_file('cities1000.txt')
+# 	data_dict = parsed[0]
+# 	data_list = parsed[1]
+# 	print(find_closest_cities('3039154', 3, data_dict, data_list))
+# 	print(find_lexical_match('North', data_dict, data_list))
 
 # main()
