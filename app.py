@@ -4,7 +4,7 @@ from driver import find_lexical_match, find_closest_cities
 
 app = Flask(__name__)
 app.config.update(
-    DEBUG=True,
+	DEBUG=True,
 )
 
 # list of city data (as a list)
@@ -17,24 +17,26 @@ Loads webpage
 '''
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    parse_file('cities1000.txt')
-    return render_template('index.html')
+	parse_file('cities1000.txt')
+	return render_template('index.html')
 
 '''
 Returns lexical matches by city name
 '''
 @app.route('/findLexicalMatch/<word>', methods=['GET', 'POST'])
 def find_match(word):
-    return find_lexical_match(word, data_dict, data_list)
+	print(word)
+	lexical_match = find_lexical_match(word, data_dict, data_list)
+	return json.dumps(lexical_match)
 
 '''
 Returns closest k cities by distance 
 '''
 @app.route('/findClosestCities/<cityId>/<numCities>', methods=['GET', 'POST'])
 def find_cities(cityId, numCities):
-    print(cityId, int(numCities));
-    closest_cities = find_closest_cities(cityId, int(numCities), data_dict, data_list)
-    return json.dumps(closest_cities)
+	print(cityId, int(numCities))
+	closest_cities = find_closest_cities(cityId, int(numCities), data_dict, data_list)
+	return json.dumps(closest_cities)
 
 def parse_file(filename):
 	'''
@@ -68,6 +70,7 @@ def parse_file(filename):
 			city_id = line_list[0]
 			data_dict[city_id] = line_list
 
+# parse_file('cities1000.txt')
 
 if __name__ == '__main__':
-    app.run()
+	app.run()

@@ -12,7 +12,8 @@
     <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
@@ -23,18 +24,35 @@
                 <a class="navbar-brand" href="/">Indexing the Globe</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href='/about'>About</a> </li>
-                <li><input class="form-control inputNav" id="twitterHandle" placeholder="BarackObama"></li>
             </ul>
-
-            <ul class="nav navbar-nav">
-                <li><input class="form-control inputNav" id="numTweets" placeholder="Number of Tweets: 10"></li>
-            </ul>
-
         </div>
     </nav>
-    <div id="container" style="height: 100%"></div>
-    
+    <div id="container" style="height: 100%">
+
+        <!-- Given a city ID X query for the k closest cities where closeness is measured
+        using an appropriately chosen measure of distance by latitude and longitude. -->
+        <h3>Proximity Query</h3>
+        <form>
+            <div class="form-group">
+                <label for="cityId">City ID:</label>
+                <input type="cityId" class="form-control" id="cityId" placeholder="Example: 3039154">
+                <label for="numCities">Number of Cities:</label>
+                <input type="numCities" class="form-control" id="numCities" placeholder="Example: 3">
+            </div>
+            <button id="submit-proximity" type="submit" class="btn btn-primary">Submit Proximity Query</button>
+        </form>
+
+        <!-- Given an input word, return any cities that match that word. -->
+        <h3>Lexical Query</h3>
+        <form>
+            <div class="form-group">
+                <label for="inputWord">Input word:</label>
+                <input type="inputWord" class="form-control" id="inputWord" placeholder="Example: North">
+            </div>
+            <button id="submit-lexical" type="submit" class="btn btn-primary">Submit Lexical Query</button>
+        </form>
+        <div id="result"></div>
+    </div>
     <script type="text/javascript" src="/static/javascripts/script.js"></script>
 </body>
 

@@ -54,7 +54,8 @@ def find_closest_cities(given_city_id, k, data_dict, data_list):
 			city_id = city_list[0]
 			city_name = city_list[2]
 			dist = compute_distance(given_city_lat, given_city_lon, city_lat, city_lon)
-			distance_list.append((dist, city_id, city_name))
+			if city_name != given_city[2]:
+				distance_list.append((dist, city_id, city_name))
 
 		closest_k = sorted(distance_list, key=lambda x: x[0])[0:k]
 		return closest_k
@@ -81,13 +82,13 @@ def find_lexical_match(word, data_dict, data_list):
 			matches.append(city_name)
 	return matches
 
-# # main program for testing purposes (uncomment to test)
+# main program for testing purposes (uncomment to test)
 # def main():
 # 	# all cities with a population > 1000 or seats of adm div (ca 150.000), see 'geoname' table for columns
 # 	parsed = parse_file('cities1000.txt')
 # 	data_dict = parsed[0]
 # 	data_list = parsed[1]
 # 	print(find_closest_cities('3039154', 3, data_dict, data_list))
-# 	print(find_lexical_match('North', data_dict, data_list))
+# 	# print(find_lexical_match('North', data_dict, data_list))
 
 # main()

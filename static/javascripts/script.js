@@ -1,33 +1,47 @@
-var numTweets = '';
-var twitterHandle = '';
+// Some examples:
+// findClosestCities('3039154', 3);
+// findLexicalMatch('North');
 
-$("#numTweets").change(function(){
-    numTweets = $('#numTweets').val();
-    if ((numTweets != '') && (twitterHandle != '')){
-        console.log(twitterHandle, numTweets)
-        get_data(twitterHandle, numTweets)
-    }
+$("#submit-proximity").click(function(event) {
+    event.preventDefault();
+    var cityId = $("#cityId").val()
+    var numCities = $("#numCities").val()
+    findClosestCities(cityId, numCities)
 })
 
-$("#twitterHandle").change(function(){
-    twitterHandle = $('#twitterHandle').val();
-    if ((numTweets != '') && (twitterHandle != '')){
-        console.log(twitterHandle, numTweets)
-        get_data(twitterHandle, numTweets)
-    }
+$("#submit-lexical").click(function(event) {
+    event.preventDefault();
+    var inputWord = $("#inputWord").val()
+    findLexicalMatch(inputWord)
 })
 
-
-// some examples: ishantlguru, realDonaldTrump, justinbieber
-findClosestCities('3039154', 3);
 
 function findClosestCities(cityId, numCities) {
-    var startTime = new Date();
-    $('#container').append('<div style="height: 800px" id="total_chart"></div>');
 
-    console.log('hi');
+    var html_string = '<h3><center> Processing... </center></h3>';
+    $("#result").html(html_string);
     $.getJSON('/findClosestCities/' + cityId + '/' + numCities, function (data) {
         console.log(data);
+        var html_string = '<h3><center> Closest Cities </center></h3><ul>';
+        for (var i = 0; i < data.length; i++){
+            html_string += '<li>' + data[i][2] + '</li>'
+        }
+        html_string += '</ul>'
+        $("#result").html(html_string);
+    });
+}
+
+function findLexicalMatch(inputWord) {
+    var html_string = '<h3><center> Processing... </center></h3>';
+    $("#result").html(html_string);
+    $.getJSON('/findLexicalMatch/' + inputWord, function (data) {
+        console.log(data);
+        var html_string = '<h3><center> Lexical Matches </center></h3><ul>';
+        for (var i = 0; i < data.length; i++){
+            html_string += '<li>' + data[i] + '</li>'
+        }
+        html_string += '</ul>'
+        $("#result").html(html_string);
     });
 }
 
