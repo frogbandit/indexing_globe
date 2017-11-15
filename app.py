@@ -25,6 +25,7 @@ Returns lexical matches by city name
 '''
 @app.route('/findLexicalMatch/<word>', methods=['GET', 'POST'])
 def find_match(word):
+	parse_file('cities1000.txt')
 	print(word)
 	lexical_match = find_lexical_match(word, data_dict, data_list)
 	return json.dumps(lexical_match)
@@ -34,6 +35,7 @@ Returns closest k cities by distance
 '''
 @app.route('/findClosestCities/<cityId>/<numCities>', methods=['GET', 'POST'])
 def find_cities(cityId, numCities):
+	parse_file('cities1000.txt')
 	print(cityId, int(numCities))
 	closest_cities = find_closest_cities(cityId, int(numCities), data_dict, data_list)
 	if closest_cities == 0:
