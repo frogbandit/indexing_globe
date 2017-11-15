@@ -36,7 +36,10 @@ Returns closest k cities by distance
 def find_cities(cityId, numCities):
 	print(cityId, int(numCities))
 	closest_cities = find_closest_cities(cityId, int(numCities), data_dict, data_list)
-	return json.dumps(closest_cities)
+	if closest_cities == 0:
+		return '0'
+	else: 
+		return json.dumps(closest_cities)
 
 def parse_file(filename):
 	'''

@@ -42,6 +42,7 @@ def parse_file(filename):
 
 # returns the closest k cities by distance
 def find_closest_cities(given_city_id, k, data_dict, data_list):
+	if given_city_id in data_dict: 
 		given_city = data_dict[given_city_id]
 		given_city_lat = float(given_city[4])
 		given_city_lon = float(given_city[5])
@@ -59,6 +60,9 @@ def find_closest_cities(given_city_id, k, data_dict, data_list):
 
 		closest_k = sorted(distance_list, key=lambda x: x[0])[0:k]
 		return closest_k
+	else: 
+		# invalid city id
+		return 0
 		
 # From StackOverflow: finds distance between two latlng points using Haversine formula
 def compute_distance(lat1, lon1, lat2, lon2):
